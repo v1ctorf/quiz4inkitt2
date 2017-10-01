@@ -1,0 +1,17 @@
+<h1>Listing answers</h1>
+ 
+<table>
+  <tr>
+    <th>ip</th>
+    <th>question</th>
+    <th>answer</th>
+  </tr>
+ 
+  <% @answers.each do |answer| %>
+    <tr>
+      <td><%= answer.ip %></td>
+      <td><%= answer.question %></td>
+      <td><%= answer.option %></td>
+    </tr>
+  <% end %>
+</table>
