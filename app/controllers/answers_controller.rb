@@ -9,11 +9,12 @@ class AnswersController < ApplicationController
     
     def create
       @answer = Answer.new(answer_params)
+      @answer.ip = request.remote_ip
      
       if @answer.save
-        redirect_to @answer
+        redirect_to answers_path
       else
-        render 'new'
+        render 'index'
       end
       
     end
@@ -40,12 +41,12 @@ class AnswersController < ApplicationController
       @answer = Answer.find(params[:id])
       @answer.destroy
    
-      redirect_to articles_path
+      redirect_to answers_path
     end
     
     private
       def answer_params
-        params.require(:answer).permit(:ip, :question, :option)
+        params.require(:answer).permit(:question, :option)
       end
-    
+      
 end
