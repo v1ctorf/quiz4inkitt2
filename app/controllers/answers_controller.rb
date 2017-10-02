@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
     def index
       finished = Answer.group(:ip).having('COUNT(*) == 5').count
       @answers = Answer.where('ip IN (?)',  finished.keys)
+      # @answers_all = Answer.all
 
       @distribution = []
       @questions = []
@@ -10,8 +11,6 @@ class AnswersController < ApplicationController
          @distribution[i] = @answers.where("question == ?",i + 1).group(:option).count
          @questions[i] = generate_question(i)
       end
-      
-      
     end
     
     def new
@@ -35,27 +34,8 @@ class AnswersController < ApplicationController
       else
         render 'new'
       end
-      
     end
      
-    def show
-      @answer = Answer.find(params[:id])
-    end
-    
-    def edit
-      @answer = Answer.find(params[:id])
-    end
-    
-    def update
-      @answer = Answer.find(params[:id])
-   
-      if @answer.update(answer_params)
-        redirect_to @answer
-      else
-        render 'edit'
-      end
-    end
-    
     def destroy
       @answer = Answer.find(params[:id])
       @answer.destroy
@@ -79,7 +59,7 @@ class AnswersController < ApplicationController
             'none',
             'less than 3',
             'less than 10',
-            "10 or more"
+            "10 books or more"
           ]
         },{
           'question' => "2) What book category do you prefere?",
@@ -98,10 +78,10 @@ class AnswersController < ApplicationController
         },{
           'question' => "4) Usually, how do you choose a book?",
           'options' => [
-            "friends' recomendations",
+            "recomendations from friends",
             'best sellers',
             'literary critics',
-            "specialized apps' recomendations",
+            "recomendations from specialized apps",
             "by myself"
           ]
         },{
