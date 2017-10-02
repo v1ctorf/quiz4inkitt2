@@ -1,17 +1,33 @@
 <h1>quiz - answer here!</h1>
 
 <%= form_for :answer, url: answers_path do |f| %>
-  <p>
-    <%= f.label :question %><br>
-    <%= f.text_field :question %>
-  </p>
+   <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@answer.errors.count, "error") %> prohibited
+        this answer from being saved:
+      </h2>
+      <ul>
+        <% @answer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <p>currently, what's your favorite option? (<%= @answered_questions + 1 %>/5)</p>
  
   <p>
-    <%= f.label :option %><br>
-    <%= f.text_field :option %>
+    <%= f.radio_button(:option, 1) %>
+    <%= f.label(:option_a, "A") %>
+    <%= f.radio_button(:option, 2) %>
+    <%= f.label(:option_b, "B") %>
   </p>
  
   <p>
     <%= f.submit %>
   </p>
 <% end %>
+
+<p><%= link_to 'all answers', controller: 'answers' %></p>
