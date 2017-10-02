@@ -4,23 +4,14 @@
   <%= link_to 'New Answer', new_answer_path %>
 </p> 
  
-<table>
-  <tr>
-    <th>ip</th>
-    <th>question</th>
-    <th>answer</th>
-    <th>delete</th>
-  </tr>
- 
-  <% @answers.each do |answer| %>
-    <tr>
-      <td><%= answer.ip %></td>
-      <td><%= answer.question %></td>
-      <td><%= answer.option %></td>
-      <td><%= link_to 'Destroy', answer_path(answer),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+
+
+
+<% @questions.each_with_index do |question,index| %>
+  <p><%= question["question"] %></p>
+  
+  <% question["options"].each_with_index do |option,key| %>
+    <li><%= option %> = <%= @distribution[index][key] ? @distribution[index][key] : 0 %></li>
   <% end %>
-</table>
+<% end %>
 
