@@ -65,42 +65,43 @@ class AnswersController < ApplicationController
     def generate_question(question)
       questions = [
         {
-          'question' => 'question one?',
+          'question' => "How many books did you read last year?",
           'options' => [
-            'answer 11',
-            'answer 12',
-            'answer 13',
-            'answer 14'
+            'none',
+            'less than 3',
+            'less than 10',
+            "10 or more"
           ]
         },{
-          'question' =>'question two?',
+          'question' => "What book category do you prefere?",
           'options' => [
-            'answer 21',
-            'answer 22',
-            'answer 23'
+            'fiction',
+            'non-fiction'
           ]
         },{
-          'question' => 'question three?',
+          'question' => "What's your favorite way to read a book?",
           'options' => [
-            'answer 31',
-            'answer 32',
-            'answer 33',
-            'answer 31',
-            'answer 32'
+            'paper book',
+            'tablet or mobile phone',
+            'e-reader',
+            'I prefer audio books'
           ]
         },{
-          'question' => 'question four?',
+          'question' => "Usually, how do you choose a book?",
           'options' => [
-            'answer 41',
-            'answer 42',
-            'answer 43'
+            "friends' recomendations",
+            'best sellers',
+            'literary critics',
+            "specialized apps' recomendations",
+            "by myself"
           ]
         },{
-          'question' => 'question five?',
+          'question' => 'How much do you usually pay for a book?',
           'options' => [
-            'answer 51',
-            'answer 52',
-            'answer 53'
+            "I don't use to pay for books",
+            "less than 5 euros",
+            "less than 10 euros",
+            "10 euros or more"
           ]
         }
       ]
