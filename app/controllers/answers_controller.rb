@@ -66,39 +66,42 @@ class AnswersController < ApplicationController
       questions = [
         {
           'question' => 'question one?',
-          'answers' => {
-            1 => 'answer 11',
-            2 => 'answer 12',
-            3 => 'answer 13'
-          }
+          'options' => [
+            'answer 11',
+            'answer 12',
+            'answer 13',
+            'answer 14'
+          ]
         },{
           'question' =>'question two?',
-          'answers' => {
-            1 => 'answer 21',
-            2 => 'answer 22',
-            3 => 'answer 23'
-          }
+          'options' => [
+            'answer 21',
+            'answer 22',
+            'answer 23'
+          ]
         },{
           'question' => 'question three?',
-          'answers' => {
-            1 => 'answer 31',
-            2 => 'answer 32',
-            3 => 'answer 33'
-          }
+          'options' => [
+            'answer 31',
+            'answer 32',
+            'answer 33',
+            'answer 31',
+            'answer 32'
+          ]
         },{
           'question' => 'question four?',
-          'answers' => {
-            1 => 'answer 41',
-            2 => 'answer 42',
-            3 => 'answer 43'
-          }
+          'options' => [
+            'answer 41',
+            'answer 42',
+            'answer 43'
+          ]
         },{
           'question' => 'question five?',
-          'answers' => {
-            1 => 'answer 51',
-            2 => 'answer 52',
-            3 => 'answer 53'
-          }
+          'options' => [
+            'answer 51',
+            'answer 52',
+            'answer 53'
+          ]
         }
       ]
       

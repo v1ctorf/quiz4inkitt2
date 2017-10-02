@@ -17,17 +17,17 @@
 
 
   <p><%= @question["question"] %></p>
- 
-  <p>
-    <%= f.radio_button(:option, 1) %>
-    <%= f.label(:option_a, "A") %>
-    <%= f.radio_button(:option, 2) %>
-    <%= f.label(:option_b, "B") %>
-  </p>
+
+  <ol>
+    <% @question["options"].each_with_index do |opt, val| %>
+      <li>
+        <%= f.radio_button(:option, val) %>
+        <%= f.label(:option_a, opt) %>
+      </li>
+    <% end %>
+  </ol>
  
   <p>
     <%= f.submit %>
   </p>
 <% end %>
-
-<p><%= link_to 'all answers', controller: 'answers' %></p>
