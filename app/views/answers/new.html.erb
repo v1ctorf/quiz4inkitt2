@@ -16,7 +16,7 @@
   <% end %>
 
 
-  <p>currently, what's your favorite option? (<%= @answered_questions + 1 %>/5)</p>
+  <p><%= @question["question"] %></p>
  
   <p>
     <%= f.radio_button(:option, 1) %>

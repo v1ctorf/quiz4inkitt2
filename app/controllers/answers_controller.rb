@@ -4,11 +4,9 @@ class AnswersController < ApplicationController
     end
     
     def new
-      @answered_questions = answered_questions
-      
       redirect_to answers_path if answered_questions == 5
-      
       @answer = Answer.new
+      @question = generate_question(answered_questions)
     end
     
     def create
@@ -18,7 +16,7 @@ class AnswersController < ApplicationController
      
       if @answer.save
         if answered_questions < 5
-          @answered_questions = answered_questions
+          @question = generate_question(answered_questions)
           render 'new'
         else
           redirect_to answers_path
@@ -61,6 +59,50 @@ class AnswersController < ApplicationController
     
     def answered_questions
       Answer.where(["ip = ?", request.remote_ip]).length
+    
+    end
+    
+    def generate_question(question)
+      questions = [
+        {
+          'question' => 'question one?',
+          'answers' => {
+            1 => 'answer 11',
+            2 => 'answer 12',
+            3 => 'answer 13'
+          }
+        },{
+          'question' =>'question two?',
+          'answers' => {
+            1 => 'answer 21',
+            2 => 'answer 22',
+            3 => 'answer 23'
+          }
+        },{
+          'question' => 'question three?',
+          'answers' => {
+            1 => 'answer 31',
+            2 => 'answer 32',
+            3 => 'answer 33'
+          }
+        },{
+          'question' => 'question four?',
+          'answers' => {
+            1 => 'answer 41',
+            2 => 'answer 42',
+            3 => 'answer 43'
+          }
+        },{
+          'question' => 'question five?',
+          'answers' => {
+            1 => 'answer 51',
+            2 => 'answer 52',
+            3 => 'answer 53'
+          }
+        }
+      ]
+      
+      return questions[question]
     end
     
     private
