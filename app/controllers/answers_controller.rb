@@ -2,7 +2,6 @@ class AnswersController < ApplicationController
     def index
       finished = Answer.group(:ip).having('COUNT(*) == 5').count
       @answers = Answer.where('ip IN (?)',  finished.keys)
-      # @answers_all = Answer.all
 
       @distribution = []
       @questions = []
@@ -40,6 +39,10 @@ class AnswersController < ApplicationController
       @answer = Answer.find(params[:id])
       @answer.destroy
       redirect_to answers_path
+    end
+    
+    def list
+      @answers = Answer.all
     end
     
     def next_question
