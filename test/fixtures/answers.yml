@@ -3,9 +3,9 @@
 one:
   ip: MyString
   question: 1
-  answer: 1
+  option: 1
 
 two:
   ip: MyString
   question: 1
-  answer: 1
+  option: 1
